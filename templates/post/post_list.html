@@ -1,0 +1,25 @@
+{% extends "layout/_base.html" %}
+{% block title %}POSTS{% endblock %}
+{% block body %}
+<section>
+    <form action="/post/all" method="post" style="background-color: lightpink">
+        {% csrf_token %}
+        <div class="container" >
+        <div class="row">
+          <div class="col-md-8">
+            {% for object in object_list %}
+            <div class="card card-signin my-5">
+              <div class="card-body"  style="background-color: lightpink">
+                <a class="text-dark" href="/post/postdetail/{{ object.id }}" ><b>{{ object.username }}</b></a>
+                <br><br>
+                <p class="card-text text-dark">{{ object.title }}</p>
+              </div>
+                <img src="{{ object.pic.url }}" alt="my image" width="250" height="250" style="background-color: lightpink">
+            </div>
+            {% endfor %}
+           </div>
+        </div>
+    </div>
+    </form>
+</section>
+{% endblock %}

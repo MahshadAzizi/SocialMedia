@@ -1,0 +1,22 @@
+{% extends "layout/_base.html" %}
+{% block title %}POSTSOFWEEK{% endblock %}
+{% block body %}
+<section style="background-color: lightpink">
+    <div class="container" style="background-color: lightpink">
+    <div class="row">
+      <div class="col-md-8">
+        {% for post in posts %}
+          <div class="card card-signin my-5">
+          <div class="card-body" style="background-color: lightpink">
+            <a class="text-dark" href="/post/postdetail/{{ post.id }}" ><b>{{ post.username }}</b></a>
+            <br><br>
+            <p class="card-text text-dark">{{ post.title }}</p>
+          </div>
+                <img src="{{ post.pic.url }}" alt="my image" width="250" height="250" style="background-color: lightpink">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

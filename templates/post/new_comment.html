@@ -1,0 +1,26 @@
+{% extends "layout/_base.html" %}
+{% block title %}NEW COMMENT{% endblock %}
+{% block body %}
+<form method="post" enctype="multipart/form-data" style="background-color: lightpink">
+    {% csrf_token %}
+    <div class="container" style="background-color: lightpink">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="background-color: lightpink">
+        <div class="card card-signin my-5">
+          <div class="card-body" style="background-color: lightpink">
+            <h5 class="card-title text-center" ><b>Comment</b></h5>
+
+            <fieldset class="form-group"><br>
+                    {{ form.as_ul }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" style="background-color: lightpink" type="submit" value="Save">Comment</button><br>
+            </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+</form>
+{% endblock %}

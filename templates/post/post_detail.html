@@ -1,0 +1,56 @@
+{% extends "layout/_base.html" %}
+{% block title %}POST DETAIL{% endblock %}
+{% block body %}
+{% load static %}
+<form action="/post/postdetail" style="background-color: lightpink">
+    <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card card-signin my-5">
+                  <div class="card-body" style="background-color: lightpink">
+                    <a class="text-dark" ><b>{{ post.username }}</b></a>
+                    <br><a class="text-dark" ><b>{{ post.username.email }}</b></a>
+                    <br><a class="text-dark" ><b>{{ post.title }}</b></a>
+                    <br><small class="text-muted">Posted on {{ post.date_posted }}</small>
+                    <br><br>
+                    <p class="card-text text-dark">{{ post.description }}</p>
+                  </div>
+                  <a href="{{ post.pic.url }}"><img class="card-img-top" src="{{ post.pic.url }}" alt=""></a>
+                </div>
+               </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-8">
+                 <div class="card card-signin my-5">
+                  <div class="card-body" style="background-color: lightpink">
+                    {% if comments %}
+                    <h3 class="card-text text-dark">Comment{{ comments.count|pluralize }}: {{ comments.count }}</h3>
+                    {% for comment in comments %}
+                        <div class="card-body">
+                            <p class="text-dark" ><b>{{ comment.username }}</b></p>
+                            <small>{{ comment.comment_date }}</small><br><br>
+                            <p class="card-text text-dark">{{ comment.comment }}</p>
+                        </div>
+                        <hr class="my-1">
+                    {% endfor %}
+                     </div>
+                    {% else %}
+                        <p>No comments to show!</p>
+                    {% endif %}
+                 </div>
+                </div>
+            </div>
+{#            <div class="col-md-8">#}
+{#                <div class="card card-signin my-5">#}
+                  <div class="card-body" style="background-color: lightpink">
+                      <a href="/post/new_comment/{{ post.id }}" style="color: white; font-weight: bold"><h2>Leave a comment</h2></a>
+                  </div>
+{#               </div>#}
+{#            </div>#}
+
+
+
+    </div>
+</form>
+{% endblock %}
